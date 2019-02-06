@@ -1,6 +1,12 @@
 # Go Builder
 
-Workflow configuration:
+Github Action to cross-compile Go project binaries for multiple platforms in a single run.
+
+Uses `golang:1.11` Docker image with `CGO_ENABLED=0` flag.
+
+## Usage
+
+Basic usage:
 
 ```
 action "build" {
@@ -8,7 +14,13 @@ action "build" {
 }
 ```
 
-Specify architectures to build:
+Basic workflow configuration will compile binaries for the following platforms:
+
+- linux: 386/amd64
+- darwin: 386/amd64
+- windows: 386/amd64 
+
+Alternatively you can provide a list of target architectures in `arg`:
 
 ```
 action "build" {
