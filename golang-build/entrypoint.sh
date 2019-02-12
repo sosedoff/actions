@@ -21,7 +21,7 @@ targets=${@-"darwin/amd64 darwin/386 linux/amd64 linux/386 windows/amd64 windows
 echo "----> Setting up Go repository"
 mkdir -p $build_path
 mkdir -p $release_path
-cp $src_path/* $build_path/
+ln -s $src_path $build_path
 cd $build_path
 
 for target in $targets; do
@@ -31,7 +31,7 @@ for target in $targets; do
 
   echo "----> Building project for: $target"
   GOOS=$os GOARCH=$arch CGO_ENABLED=0 go build -o $output
-  zip -j $output.zip $output
+  zip -j $output.zip $output > /dev/null
 done
 
 echo "----> Build is complete. List of files at $release_path:"
