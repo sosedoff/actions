@@ -23,6 +23,7 @@ mkdir -p $build_path
 mkdir -p $release_path
 ln -s $src_path $build_path
 cd $build_path
+ls -al
 
 for target in $targets; do
   os="$(echo $target | cut -d '/' -f1)"
