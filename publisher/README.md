@@ -27,12 +27,12 @@ jobs:
         uses: actions/checkout@master
 
       - name: Build Site
-        uses: sosedoff/actions/publisher
+        uses: sosedoff/actions/publisher@master
         with:
           entrypoint: /build.sh
 
       - name: Publish Site
-        uses: sosedoff/actions/publisher
+        uses: sosedoff/actions/publisher@master
         env:
           JEKYLL_DEPLOY_KEY: ${{ secrets.JEKYLL_DEPLOY_KEY }}
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
@@ -43,7 +43,7 @@ jobs:
           entrypoint: /publish.sh
 
       - name: Send Notification
-        uses: sosedoff/actions/publisher
+        uses: sosedoff/actions/publisher@master
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         with:
