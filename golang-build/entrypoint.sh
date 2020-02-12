@@ -30,7 +30,11 @@ for target in $targets; do
 
   echo "----> Building project for: $target"
   GOOS=$os GOARCH=$arch CGO_ENABLED=0 go build -o $output
-  zip -j $output.zip $output > /dev/null
+
+  if [[ -n "$COMPRESS_FILES" ]]; then
+    zip -j $output.zip $output > /dev/null
+    rm $output
+  fi
 done
 
 echo "----> Build is complete. List of files at $release_path:"
